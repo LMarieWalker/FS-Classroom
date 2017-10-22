@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>FS-Classroom - Classes</title>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="./style.css" type="text/css">
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="../node_modules/materialize-css/dist/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="../node_modules/materialize-css/dist/js/materialize.min.js"></script>
+
+  </head>
+  <body>
+    <div class="mainContainer">
+      <div class="container">
+        <h3>Classrooms</h3>
+
+
+
+
+      </div>
+
+      <div class="badges">
+
+        <ul class="collapsible" data-collapsible="accordion">
+          <% for(var i = 0; i < classroom.length; i++){ %>
+          <li>
+
+            <div class="collapsible-header hoverable">
+                <%= "Class: " + classroom[i].subject %><br>
+
+              <span class="badge">
+                Class ID: <%= classroom[i].id %> <%= "and # of Students: " + classroom[i].students.length %><br>
+
+              </span>
+            </div>
+
+            <div class="collapsible-body">
+              <% var count = 0; %>
+              <% var imgCount = 1; %>
+              <% for(var x = 0; x < classroom[i].students.length; x++){ %>
+              <ul class="collection">
+
+                <li class="collection-item avatar">
+
+                  <img src="./images/female-01.jpg" alt="" class="circle">
+                  <span class="title"><%= classroom[i].students[x].name %></span><br>
+
+                    <ul class="collapsible popout" data-collapsible="accordion">
+                      <li>
+                        <div class="collapsible-header">Student Profile</div>
+                        <div class="collapsible-body">
+                          <span>
+                            <%= classroom[i].students[x].name %><br>
+                            Student Id: <%= classroom[i].students[x].id %><br>
+                          </span>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="collapsible-header">Scores</div>
+                        <div class="collapsible-body">
+                          <span>
+                            <% for(var y = 0; y < classroom[i].students[x].scores.length; y++){ %>
+                            <%= " "+classroom[i].students[x].scores[y] %><br>
+                            <% } %>
+                          </span>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="collapsible-header">Grade</div>
+                        <div class="collapsible-body">
+                          <span>
+                            <%= classroom[i].students[x].grade %>
+                            <form action="/classroom" method="post">
+                              <input type="text" name="id" placeholder="Name">
+                              <button class="waves-effect waves-light btn-large" type="submit">Submit New Grade</button>
+                              <!-- <input type="submit" > -->
+                            </form>
+                          </span>
+                        </div>
+                      </li>
+                    </ul>
+
+                </li>
+              </ul>
+              <% } %>
+            </div>
+          </li>
+          <% } %>
+        </ul>
+      </div>
+
+    </div>
+  </body>
+</html>
+
+
+<!--
+index[i].students[x].name
+index[i].students[x].scores[y]
+index[i].students[x].grade
+index[i].students[x].id
+index[i].subject
+index[i].id
+-->

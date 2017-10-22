@@ -1,0 +1,21 @@
+@media screen {
+  .mainContainer{
+    margin:30px;
+    flex:1;
+    border: 1px solid lightgrey;
+    background-color: lightyellow;
+    padding: 20px;
+    text-align: center;
+  }
+}
+
+.grades {
+  border: 1px solid grey;
+  margin: 5px;
+}
+
+.formContainer {
+  border: 1px solid grey;
+  background-color: lightpink;
+  padding: 30px 70px;
+}
